@@ -1,0 +1,43 @@
+body {
+	/* background-image: url(triviagame/assets/images/ws_Jelly_fish_fields_1152x864.jpg)
+	*/
+	background-color: blue; 
+}
+
+.wrapper {
+	background: white;
+	text-align: center;
+	border: 5px solid black;
+	width: 150px;
+	padding: 50px;
+	margin: 0;
+}
+
+#startBox {
+	width: 50px;
+    padding: 8px;
+    border: 5px solid red;
+    margin: 0;
+    background: red;
+}
+}
+
+#startButton {
+	width: 50px;
+	height: 50px;
+	margin-top: 20px;
+	overflow: auto;
+	text-align: center;
+	background: white;
+	position: absolute;
+	top: 50%;
+}
+
+button {
+	width: 16px;
+    padding: 5px;
+    border: 5px solid gray;
+    margin: 0;
+}
+
+

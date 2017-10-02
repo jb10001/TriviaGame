@@ -1,61 +1,121 @@
 <!doctype html>
 <html lang="en-us">
 
-<head> 
-  <meta charset="UTF-8"> 
-  <title>Trivia Game</title> 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="assets/javascript/app.js">
-  </script>
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css"> 
+<head>
+    <meta charset="UTF-8">
+    <title>Trivia Game</title>
+    
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
-  
-   <div class="wrapper">
-	   <div id="startBox">
-	     <button id="startButton" class="btn" href="index2.html"><h2>Start</h2></button>
-   </div>
-</div>
+    <div class="wrapper">
+        <div id="startBox">
+            <button id="startButton" class="btn" href="index2.html">
+                <h2>Start</h2> 
+            </button>
+        </div>
+    </div>
+    <div class="questions">
+        <form>
+            <p>Q1: What was the name of the Krusty Krab before Mr. Krabs bought it?</p>
+            <input type="radio" name="gender" value="other">
+            Rusty Krab
+            <input type="radio" name="gender" value="female"> Spongy Krab
+            <input type="radio" name="gender" value="male"> 
+            Tiger Krab
+            <input type="radio" name="gender" value="male"> 
+            Rolo Krab
+            
+            <br>
+            <p>Q2: What is the only episode where Larry the Lobster is referred to as "Big Larry?"</p>
+            <input type="radio" name="gender" value="other"> Ripped Pants
+            <input type="radio" name="gender" value="female"> Treasure Box
+            <input type="radio" name="gender" value="male">
+            Spot goes to school
+            <input type="radio" name="gender" value="male">
+            Plankton's Good Eye
+
+            <br>
+            <p>Q3: Who is SpongeBob Squarepants' best friend?</p>
+            <input type="radio" name="gender" value="other"> Patrick
+            <input type="radio" name="gender" value="other"> Squidward
+            <input type="radio" name="gender" value="male"> Sandy
+            <input type="radio" name="gender" value="male"> Pearl
+            
+            <br>
+            <p>Q4: What instrument does Squidward like to play?</p>
+            <input type="radio" name="gender" value="other"> Saxophone
+            <input type="radio" name="gender" value="other"> Trumpet
+            <input type="radio" name="gender" value="other"> Oboe
+            <input type="radio" name="gender" value="other"> None of the above
+
+            <br>
+            <p>Q5: Who is the Driver's Ed teacher?</p>
+            <input type="radio" name="gender" value="other"> Mrs. Huff
+            <input type="radio" name="gender" value="other"> Mrs. Colepepper
+            <input type="radio" name="gender" value="other"> Mrs. Puff
+            <input type="radio" name="gender" value="other"> Mrs. Pearl/Krab
+
+            <br>
+            <p>Q6: What is Patrick's last name?</p>
+            <input type="radio" name="gender" value="other"> Fish
+            <input type="radio" name="gender" value="other"> Star
+            <input type="radio" name="gender" value="other"> Tentacles
+            <input type="radio" name="gender" value="other"> Smith
+
+            <br>
+            <p>Q7: what is Spongebob's occupation?</p>
+            <input type="radio" name="gender" value="other"> 
+            Fry Cook
+            <input type="radio" name="gender" value="other"> Cashier
+            <input type="radio" name="gender" value="other"> Waiter
+            <input type="radio" name="gender" value="other"> 
+            He doesn't work
 
 
-   <div class="">
-   	   <div id="">
-		<p>What is your question here?</p>
-	 <input type="radio" name="gender" value="other"> Other
-</form>
-	  <input type="radio" name="gender" value="female"> Female
-</form>
-	  <input type="radio" name="gender" value="male"> Male
-</form>
-<br>
-	<p>What is your question here?</p>
-      <input type="radio" name="gender" value="other"> Other
-</form>
-	 <input type="radio" name="gender" value="female"> Female
-</form>
-	<input type="radio" name="gender" value="male"> Male
-</form>
-<br>
-   <p>What is your question here?</p>
-     <input type="radio" name="gender" value="other"> Other
-</form>
-     <input type="radio" name="gender" value="other"> Other
-</form>
-     <input type="radio" name="gender" value="male"> Male
-</form>
-<br>
-   <p>What is your question here?</p>
-   <input type="radio" name="gender" value="other"> Other
-</form>
-   <input type="radio" name="gender" value="other"> Other
-</form>
-   <input type="radio" name="gender" value="other"> Other
-</form>
+            <br>
+            <p>Q8: What is the squirrel's name?</p>
+            <input type="radio" name="gender" value="other"> Sandra
+            <input type="radio" name="gender" value="other"> Cindy
+            <input type="radio" name="gender" value="other"> Sydney
+            <input type="radio" name="gender" value="other"> 
+            Ony
 
-	</div>
-</div>
-<!-- PSUEDOCODE *******
+
+            <br>
+            <p>Q9: Pearl is a .....?</p>
+            <input type="radio" name="gender" value="other"> Dolphin
+            <input type="radio" name="gender" value="other"> Squirrel
+            <input type="radio" name="gender" value="other"> Seal
+            <input type="radio" name="gender" value="other"> Whale
+
+            <br>
+            <p>Q10: who are the heroes of Bikini Bottom?</p>
+            <input type="radio" name="gender" value="other"> Mermaid Man & Barncle boy
+            <input type="radio" name="gender" value="other"> Spongebob & Patrick
+            <input type="radio" name="gender" value="other"> Squidward & Sandy
+            <input type="radio" name="gender" value="other"> Mermaid Man & Barncle Girl
+
+            <br>
+            <p>Q11: What is the secret formula in the Krabby Patty?</p>
+            <input type="radio" name="gender" value="other"> Love
+            <input type="radio" name="gender" value="other"> 
+            A very good sauce
+            <input type="radio" name="gender" value="other"> Something in the meat
+            <input type="radio" name="gender" value="other">   
+            It has never been told.
+            
+
+        </form>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/app.js">
+    </script>
+
+ </body>
+</html>
+    <!-- PSUEDOCODE *******
 	
 1 // 
 	Need to have Questions + Answers.
@@ -103,14 +163,12 @@ Questions:
    3. Bucky goes to school
    4. Plankton's Good Eye
 
- // Yellow Banana
-
 3. Q: Who is SpongeBob Squarepants best friend?
 	A: 
 	1. Patrick
 	2. Squidward
 	3. Sandy
-	4. Pearl  // Mr. Krabbs
+	4. Pearl
 4. Q: 
 
 
@@ -119,13 +177,6 @@ Questions:
 
 
  !-->
+</body>
 
-
-
-
-
-
-
-
-   </body>
-   </html>
+</html>

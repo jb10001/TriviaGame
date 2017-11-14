@@ -1,98 +1,192 @@
-/*   When you click on the Button, it hides and proceeds
-to the game, unwraps itself   */
+var panel = $(".sub-wrapper");
 
-$("#startButton").on('click', function() {
-	$("form").css('display', 'block')
-	$(".wrapper").css('display', 'none')
-})
-
-/*   Begin Game Timer 
-----WRITE CODE HERE----
-				
-					*/
-
-/*   Register Functionality Here 
-		---- PSEUDOCODE ----
-1. Each time user picks choice, push the value of that choice
-to an array. Possible choices are True or False
-2. Each True increments a True Counter by 1 (+1)
-3. Each False increments a False Counter by 1
-4. Each Unanswered Question (user failed to choose a choice) increments
-an Unanswered Counter by 1
-5. At end of timer, all questions disappear and End Game screen
-displays, showing results (including True Counter, False Counter
-and Unanswered Counter)
-6. Button to restart game appears on End Game Screen
-
----
-Questions:
-	If radio button has a value of True,
-		how can we convert that to a 1 and add that value to 
-	a counter?
-
-	or
-
-	Each time a user a presses a radio button with a value of True,
-	then increment the True Counter by 1
-
-	Each time a user presses a radio button with a value of False
-	then increment the False Counter by 1
-
-	How do I start a Timer and to begin the timer when user presses
-	Start button?
-
-	How do I add functionality so that the timer when it ends,
-	makes all the questions go away, then displays End Game Screen?
-
-	How come my background-image isnt appearing(working)?
-
----
-	*/
-
-//	Lets start with the Timer here:
-	startTimer = 
-
-We need a TimeUp function.  
-Because we want our Timer to run out, so that End Game Screen
-is shown.
-
-var seconds_left = 10; // just to test
-
-/*   via stackOverflow
+// Question set
+var questions = [ {
+  question: "What was the name of the Krusty Krab before Mr. Krabs bought it?",
+  availAnswers: ["Rusty Krab", "Spongy Krab", "Tiger Krab", "Krab Shop"],
+  correctAnswer: "Rusty Krab"
+}, {
+  question: "What is the only episode where Larry the Lobster is referred to as Big Larry?",
+  availAnswers: ["Ripped Pants", "Treasure Box", "Spot Goes To School", "Plankton's Good Eye"],
+  correctAnswer: "Ripped Pants"
+}, {
+  question: "Who is SpongeBob Squarepants' best friend?",
+  availAnswers: ["Patrick", "Squidward", "Sandy", "Pearl"],
+  correctAnswer: "Patrick"
+}, {
+  question: "What instrument does Squidward like to play?",
+  availAnswers: ["Saxophone", "Trumpet", "Oboe", "None Of The Above"],
+  correctAnswer: "None Of The Above"
+}, {
+  question: "Who is the Driver's Ed teacher?",
+  availAnswers: ["Mrs. Puff", "Mrs. Colepepper", "Mrs. Puff", "Mrs. Pearl/Krab"],
+  correctAnswer: "Mrs. Puff"
+}, {
+  question: "What is Patrick's last name?",
+  availAnswers: ["Fish", "Star", "Tentacles", "Smith"],
+  correctAnswer: "Fresh"
+}, {
+  question: "what is Spongebob's occupation?",
+  availAnswers: ["Fry Cook", "Cashier", "Waiter", "He Doesn't Work"],
+  correctAnswer: "Fry Cook"
+}, {
+  question: "What is the squirrel's name?",
+  availAnswers: ["Sandra", "Cindy", "Sydney", "Sandy"],
+  correctAnswer: "Sandy"
+}, {
+  question: "Pearl is a .....?",
+  availAnswers: ["Dolphin", "Squirrel", "Seal", "Whale"],
+  correctAnswer: "Whale"
+}, {
+  question: "Who are the heroes of Bikini Bottom?",
+  availAnswers: ["Mermaid Man and Barnacle Boy", "Spongebob and Patrick", "Squidward and Sandy", "Mermaid Man and Barnacle Girl"],
+  correctAnswer: "Mermaid Man and Barnacle Boy"
+}, {
+  question: "What is the secret formula in the Krabby Patty?",
+  availAnswers: ["Love", "A Very Good Sauce", "Something In The Meat", "It Has Never Been Told."],
+  correctAnswer: "It Has Never Been Told."
+}];
 
 
-19
-down vote
-accepted
-var seconds_left = 10;
-var interval = setInterval(function() {
-    document.getElementById('timer_div').innerHTML = --seconds_left;
 
-    if (seconds_left <= 0)
-    {
-        document.getElementById('timer_div').innerHTML = 'You are ready';
-        clearInterval(interval);
+var timer;
+
+var game = {          
+
+  correct: 0,        
+  incorrect: 0,       
+  counter: 120,                    
+
+
+  start: function() {                 // this is to start, events
+    timer = setInterval(game.countdown, 1000);
+
+    $("#sub-wrapper").prepend("<h1>Spongebob Trivia Game</h1>");
+
+    $("#sub-wrapper").prepend("<h2>Time Remaining: <span id='counter-number'>120</span> Seconds</h2>");
+
+    $("#start").remove();             
+
+    for (var i = 0; i < questions.length; i++) {          
+      panel.append("<h2>" + questions[i].question + "</h2>");
+      for (var j = 0; j < questions[i].availAnswers.length; j++) {
+        panel.append("<input type='radio' name='question-" + i +
+        "' value='" + questions[i].availAnswers[j] + "''>" + questions[i].availAnswers[j]);
+      }                              
+                                      
     }
-}, 1000);
-Here is the Example
 
-shareedit
-edited Aug 25 '15 at 6:34
-answered Apr 3 '12 at 8:01
-
-safarov
-6,67912244
-2	 	
-Almost.. you have to pass the key to clearInterval method (it won't clear all intervals, if that's what you think). See this test case. – Shadow Wizard Apr 3 '12 at 8:03 
-
-We need a Timer that shows visually it counting down
+    panel.append("<button id='done'>Done</button>");    
+  },                                                    
 
 
-END... via stackOverflow 
-							*/ 
+  countdown: function() {          
+    game.counter--;                 
+    $("#counter-number").html(game.counter);
+    if (game.counter === 0) {
+      console.log("TIME UP");
+      game.done();                    
+    }
+  },
+
+  done: function() {
+                // 
+    $.each($("input[name='question-0']:checked"), function() {
+      if ($(this).val() === questions[0].correctAnswer) {
+        game.correct++;
+      }
+      else {
+        game.incorrect++;
+      }
+    });
+
+    $.each($("input[name='question-1']:checked"), function() {
+      if ($(this).val() === questions[1].correctAnswer) {
+        game.correct++;
+      }
+      else {
+        game.incorrect++;
+      }
+    });
+
+    $.each($("input[name='question-2']:checked"), function() {
+      if ($(this).val() === questions[2].correctAnswer) {
+        game.correct++;
+      }
+      else {
+        game.incorrect++;
+      }
+    });
+
+    $.each($("input[name='question-3']:checked"), function() {
+      if ($(this).val() === questions[3].correctAnswer) {
+        game.correct++;
+      }
+      else {
+        game.incorrect++;
+      }
+    });
+
+    $.each($("input[name='question-4']:checked"), function() {
+      if ($(this).val() === questions[4].correctAnswer) {
+        game.correct++;
+      }
+      else {
+        game.incorrect++;
+      }
+    });
+
+    $.each($("input[name='question-5']:checked"), function() {
+      if ($(this).val() === questions[5].correctAnswer) {
+        game.correct++;
+      }
+      else {
+        game.incorrect++;
+      }
+    });
+
+    $.each($("input[name='question-6']:checked"), function() {
+      if ($(this).val() === questions[6].correctAnswer) {
+        game.correct++;
+      }
+      else {
+        game.incorrect++;
+      }
+    });
+
+    $.each($("input[name='question-7']:checked"), function() {
+      if ($(this).val() === questions[7].correctAnswer) {
+        game.correct++;
+      }
+      else {
+        game.incorrect++;
+      }
+    });
+
+    this.result();
+
+  },
+
+  result: function() {
+
+    clearInterval(timer);
+
+    $("#sub-wrapper h2").remove();
+
+    panel.html("<h2>All Done!</h2>");
+    panel.append("<h3>Correct Answers: " + this.correct + "</h3>");
+    panel.append("<h3>Incorrect Answers: " + this.incorrect + "</h3>");
+    panel.append("<h3>Unanswered: " + (questions.length - (this.incorrect + this.correct)) + "</h3>");
+  }
+};
+
+// CLICK EVENTS
+
+$(document).on("click", "#start", function() {
+  game.start();
+});
 
 
-
-
-
-
+$(document).on("click", "#done", function() {
+  game.done();
+});
